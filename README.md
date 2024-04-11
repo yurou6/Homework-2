@@ -2,10 +2,13 @@
 
 Please complete the report problem below:
 
+
 ## Problem 1
 Provide your profitable path, the amountIn, amountOut value for each swap, and your final reward (your tokenB balance).
 
 > Solution
+>
+> ![image](https://github.com/yurou6/Homework-2/assets/82246709/f2730f65-04dc-46ab-b887-755678e773dc)
 
 ![alt text](image.png)
 
