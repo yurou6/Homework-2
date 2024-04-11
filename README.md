@@ -10,8 +10,6 @@ Provide your profitable path, the amountIn, amountOut value for each swap, and y
 >
 > ![image](https://github.com/yurou6/Homework-2/assets/82246709/f2730f65-04dc-46ab-b887-755678e773dc)
 
-![alt text](image.png)
-
 ## Problem 2
 What is slippage in AMM, and how does Uniswap V2 address this issue? Please illustrate with a function as an example.
 
