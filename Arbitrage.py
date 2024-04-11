@@ -22,6 +22,8 @@ def print_output(path, checktokenBtokens):
     # 輸出路徑&換取的amount
     path_str = '->'.join(path)
     print(f"path: {path_str}, tokenB balance={checktokenBtokens:.6f}")
+    print(f"The most profitable path: {path_str}, tokenB balance={checktokenBtokens:.6f}")
+
 
 def find_next_token(graph, current_token, start_token):
     next_token = None
@@ -54,32 +56,30 @@ start_token = "tokenB"
 tokensBefore = 5
 current_token = start_token
 shortestPath = ["tokenB"]
-# while(start_token != "tokenB" or tokensBefore < 20):
-#     next_token = find_next_token(graph, current_token, start_token)
-#     if next_token is None:
-#         break
-#     print(f"{current_token}->{next_token}") #tokenB->tokenA
-#     shortestPath.append(next_token)
-#     print(f"before_liquidity: {graph[next_token][current_token]}, {graph[current_token][next_token]}, {graph[next_token][current_token]*graph[current_token][next_token]}") #10,17
-#     tokensAfter =  getAmountOut(tokensBefore, graph[next_token][current_token], graph[current_token][next_token])
-#     print(f"amountIn: {tokensBefore}, amountOut: {tokensAfter}") #5,5.655321988655322
-#     graph[next_token][current_token] += tokensBefore
-#     graph[current_token][next_token] -= tokensAfter
-#     print(f"after_liquidity: {graph[next_token][current_token]},{graph[current_token][next_token]}, {graph[next_token][current_token]*graph[current_token][next_token]}")
-#     # print(graph)
-#     tokensBefore = tokensAfter
-#     current_token = next_token
-#     # print("current_token", current_token, "tokensBefore", tokensBefore)
-#     checktokenBtokens = getAmountOut(tokensBefore, graph["tokenB"][current_token], graph[current_token]["tokenB"])
-#     # print("checktokenBtokens:", checktokenBtokens)
-#     if (checktokenBtokens > 20):
-#         print(f"{current_token}->tokenB") 
-#         print(f"amountIn: {tokensBefore}, amountOut: {checktokenBtokens}")
-#         graph["tokenB"][next_token] += tokensBefore
-#         graph[next_token]["tokenB"] -= checktokenBtokens
-#         shortestPath.append("tokenB")
-#         print_output(shortestPath, checktokenBtokens)
-#         exit()
-amountOut = getAmountOut(1, 10, 100)
-print("liquidity(10,100),", "amountIn = 1,","amountOut:", getAmountOut(1, 10, 100), "tokenA:tokenB = 1:", getAmountOut(1, 10, 100))
-print("liquidity(10,100),", "amountIn = 9,","amountOut:", getAmountOut(9, 10, 100), "tokenA:tokenB = 1:", getAmountOut(9, 10, 100))
+while(start_token != "tokenB" or tokensBefore < 20):
+    next_token = find_next_token(graph, current_token, start_token)
+    if next_token is None:
+        break
+    print(f"{current_token}->{next_token}") #tokenB->tokenA
+    shortestPath.append(next_token)
+    print(f"before_liquidity: {graph[next_token][current_token]}, {graph[current_token][next_token]}, {graph[next_token][current_token]*graph[current_token][next_token]}") #10,17
+    tokensAfter =  getAmountOut(tokensBefore, graph[next_token][current_token], graph[current_token][next_token])
+    print(f"amountIn: {tokensBefore}, amountOut: {tokensAfter}") #5,5.655321988655322
+    graph[next_token][current_token] += tokensBefore
+    graph[current_token][next_token] -= tokensAfter
+    print(f"after_liquidity: {graph[next_token][current_token]},{graph[current_token][next_token]}, {graph[next_token][current_token]*graph[current_token][next_token]}")
+    # print(graph)
+    tokensBefore = tokensAfter
+    current_token = next_token
+    # print("current_token", current_token, "tokensBefore", tokensBefore)
+    checktokenBtokens = getAmountOut(tokensBefore, graph["tokenB"][current_token], graph[current_token]["tokenB"])
+    # print("checktokenBtokens:", checktokenBtokens)
+    if (checktokenBtokens > 20):
+        print(f"{current_token}->tokenB") 
+        print(f"amountIn: {tokensBefore}, amountOut: {checktokenBtokens}")
+        graph["tokenB"][next_token] += tokensBefore
+        graph[next_token]["tokenB"] -= checktokenBtokens
+        shortestPath.append("tokenB")
+        print_output(shortestPath, checktokenBtokens)
+        exit()
+
