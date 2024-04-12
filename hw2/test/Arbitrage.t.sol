@@ -93,7 +93,7 @@ contract Arbitrage is Test {
             amountOutMin, 
             path, 
             arbitrager,
-            block.timestamp + 300
+            block.timestamp + 500
         );
         /**
          * Please add your solution above
